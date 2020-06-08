@@ -46,8 +46,10 @@
   width: 35vw;
   height: 63px;
   border-radius: 5px;
-  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 5px 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 5px 2px 8px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all ease .3s;
+  transition: all ease .3s;
 }
 
 .question .cards .card svg {
@@ -67,6 +69,27 @@
   font-size: 22px;
 }
 
+.question .cards .card.selected {
+  background-color: #61bf4b;
+  color: #fff;
+}
+
+.question .cards .card.selected svg .inner {
+  fill: #61bf4b;
+}
+
+.question .cards .card.selected svg .outer {
+  fill: #faf9fe;
+}
+
+.question .cards .card.selected:hover {
+  background-color: #61bf4b;
+}
+
+.question .cards .card:hover {
+  background-color: #e4dffa;
+}
+
 .question button {
   cursor: pointer;
   margin-top: 20px;
@@ -76,5 +99,15 @@
   height: 60px;
   border-radius: 50px;
   font-size: 24px;
+  border: solid;
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+.question button:hover {
+  border: solid;
+  border-color: #272425;
+  color: #272425;
+  background-color: #faf9fe;
 }
 /*# sourceMappingURL=styles.css.map */

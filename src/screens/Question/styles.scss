@@ -32,7 +32,8 @@ $background_color: #faf9fe;
             width: 35vw;
             height: 63px;
             border-radius: 5px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+            box-shadow: 5px 2px 8px rgba(0, 0, 0, .15);
+            transition: all ease .3s;
 
             svg {
                 margin-left: 20px;
@@ -50,6 +51,29 @@ $background_color: #faf9fe;
                 margin-left: 10px;
                 font-size: 22px;
             }
+
+            &.selected {
+                background-color: $correct_answer;
+                color: #fff;
+
+                svg {
+                    .inner {
+                        fill: $correct_answer;
+                    }
+
+                    .outer {
+                        fill: $background_color;
+                    }
+                }
+
+                &:hover {
+                    background-color: $correct_answer;
+                }
+            }
+
+            &:hover {
+                background-color: darken($background_color, 6%);
+            }
         }
     }
 
@@ -62,5 +86,14 @@ $background_color: #faf9fe;
         height: 60px;
         border-radius: 50px;
         font-size: 24px;
+        border: solid;
+        transition: all ease .5s;
+
+        &:hover {
+            border: solid;
+            border-color: #272425;
+            color: #272425;
+            background-color: $background_color;
+        }
     }
 }
