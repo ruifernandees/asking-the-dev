@@ -8,7 +8,7 @@ import './styles.css';
 import logo from '../../images/asking-the-dev.png';
 
 const Question = () => {
-    const [selectedAnswer, setSelectedAnswer] = useState(0);
+    const [selectedAnswer, setSelectedAnswer] = useState(-1);
     const [question, setQuestion] = useState([]);
 
     useEffect(() => {
@@ -33,21 +33,18 @@ const Question = () => {
                 }
 
                 const shuffledAllAnswers = shuffle(allAnswers);
-                console.log(shuffledAllAnswers)
-                console.log(result.correct_answer);
                 const filteredResult = { 
                     ...result, 
                     allAnswers: shuffledAllAnswers
                 }
 
-                // console.log(filteredResult);
                 setQuestion([filteredResult]);
             });
     }, []);
 
-    useEffect(() => {
-        console.log(question);
-    }, [question]);
+    function handleSelectAnswer(index) {
+        setSelectedAnswer(index);
+    }
 
     return (
         <section className="question">
@@ -61,8 +58,15 @@ const Question = () => {
                 {question.map((item) => {
                     const allAnswers = item.allAnswers;
                     return allAnswers.map((answer) => {
+                        const index = allAnswers.indexOf(answer);
                         return (
-                            <div className="card" key={allAnswers.indexOf(answer)} onClick={() => {}}>
+                            <div 
+                                className={`card ${
+                                    selectedAnswer === index ? 'selected' : ''
+                                }`} 
+                                key={index} 
+                                onClick={() => handleSelectAnswer(index)}
+                            >
                                 <RadioButton />
                                 <p>{answer}</p>    
                             </div>
