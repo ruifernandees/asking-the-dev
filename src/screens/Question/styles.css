@@ -118,6 +118,47 @@
   color: #BCCC45;
 }
 
+.question .result .navigate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #3a64c0;
+  width: 300px;
+  height: 60px;
+  border-radius: 50px;
+  font-size: 24px;
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+.question .result .navigate:hover {
+  color: #272425;
+  background-color: #faf9fe;
+}
+
+.question .result .navigate:hover span {
+  color: #272425;
+}
+
+.question .result .navigate span {
+  color: white;
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
 .question .cards {
   margin-top: 20px;
 }
@@ -183,7 +224,7 @@
   background-color: #e4dffa;
 }
 
-.question button {
+.question .send {
   cursor: pointer;
   margin-top: 20px;
   color: #fff;
@@ -197,7 +238,7 @@
   transition: all ease .5s;
 }
 
-.question button:hover {
+.question .send:hover {
   border: solid;
   border-color: #272425;
   color: #272425;

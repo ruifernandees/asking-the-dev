@@ -61,6 +61,33 @@ $alert_color: #BCCC45;
             }
             display: none;
         }
+
+        .navigate {
+            @include flexCenter();
+            cursor: pointer;
+            margin-top: 20px;
+            color: #fff;
+            background-color: $button_color;
+            width: 300px;
+            height: 60px;
+            border-radius: 50px;
+            font-size: 24px;
+            transition: all ease .5s;
+            
+            &:hover {
+                color: #272425;
+                background-color: $background_color;
+
+                span {
+                    color: #272425;
+                }
+            }
+
+            span {
+                color: white;
+                transition: all ease .5s;
+            }
+        }
     }
 
     .cards {
@@ -121,7 +148,7 @@ $alert_color: #BCCC45;
         }
     }
 
-    button {
+    .send {
         cursor: pointer;
         margin-top: 20px;
         color: #fff;
