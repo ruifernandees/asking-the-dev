@@ -4,6 +4,7 @@ $correct_answer: #61bf4b;
 $wrong_answer: #c6513e;
 $button_color: #3a64c0;
 $background_color: #faf9fe;
+$alert_color: #BCCC45;
 
 .question {
     @include flexCenter(column);
@@ -17,6 +18,49 @@ $background_color: #faf9fe;
         margin-top: 20px;
         font-weight: 400;
         font-size: 32px;
+    }
+
+    .result {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        top: 0;
+        padding: 0;
+        background-color: rgba(0, 0, 0, .8);
+        position: fixed;
+        // display: none;
+        @include flexCenter(column);
+        display: none;
+
+        h1 {
+            color: $background-color;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .success {
+            @include flexCenter(column);
+            span {
+                color: $correct_answer;
+            }
+            display: none;
+        }
+
+        .error {
+            @include flexCenter(column);
+            span {
+                color: $wrong_answer;
+            }
+            display: none;
+        }
+
+        .alert {
+            @include flexCenter(column);
+            span {
+                color: $alert_color;
+            }
+            display: none;
+        }
     }
 
     .cards {
