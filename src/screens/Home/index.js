@@ -1,7 +1,86 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+import { Link } from 'react-router-dom';
+
+import api from '../../services/api';
+
+import './styles.css';
+import logo from '../../images/asking-the-dev.png';
 
 const Home = () => {
-    return <h1>Home</h1>;
+
+    // useEffect(() => {
+    //     api.get('?amount=1&category=18&difficulty=easy&type=multiple')
+    //         .then(response => {
+    //             // console.log(response.data);
+    //             const result = response.data.results[0];
+
+    //             const allAnswers = [
+    //                 ...result.incorrect_answers,
+    //                 result.correct_answer
+    //             ];
+
+    //             const shuffle = (arr) => {
+    //                 for (let i = arr.length - 1; i > 0; i--) {
+    //                     const j = Math.floor(Math.random() * i)
+    //                     const temp = arr[i]
+    //                     arr[i] = arr[j]
+    //                     arr[j] = temp
+    //                 }
+    //                 return arr;
+    //             }
+
+    //             const shuffledAllAnswers = shuffle(allAnswers);
+    //             const filteredResult = {
+    //                 ...result,
+    //                 allAnswers: shuffledAllAnswers
+    //             }
+
+    //             setQuestion([filteredResult]);
+    //         });
+    // }, []);
+
+    return (
+        <section className="home">
+            <img className="logo" src={logo} alt="Asking the Dev logo" />
+
+            <div className="buttons">
+                <Link to='/set-questions'>
+                    <button className="button">
+                        <span className="material-icons md-36">
+                            play_arrow
+                        </span>
+                        <p style={{marginLeft: 2 + 'px'}}>Play</p>
+                    </button>
+                </Link>
+                <button className="button">
+                    <span className="material-icons md-24">
+                        info
+                    </span>
+                    <p>About</p>
+                </button>
+
+                <button className="button">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        className="feather feather-github"
+                    >
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                    <p>GitHub</p>
+                </button>
+            </div>
+        </section>
+    );
 };
 
 export default Home;

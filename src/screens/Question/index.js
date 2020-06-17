@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import RadioButton from './RadioButton';
-import api from '../../services/api'
+import api from '../../services/api';
 
 import './styles.css';
 import logo from '../../images/asking-the-dev.png';
@@ -100,7 +100,7 @@ const Question = () => {
                         }}
                     >
                         Next answer 
-                        <span class="material-icons md-36">
+                        <span className="material-icons md-36">
                             arrow_right_alt
                         </span>
                     </button>
@@ -119,7 +119,7 @@ const Question = () => {
                         className="navigate"
                     >
 
-                        <span class="material-icons md-36">
+                        <span className="material-icons md-36">
                             keyboard_backspace
                         </span>
                         Go back
@@ -139,7 +139,7 @@ const Question = () => {
                         className="navigate"
                     >
 
-                        <span class="material-icons md-36">
+                        <span className="material-icons md-36">
                             keyboard_backspace
                         </span>
                         Go back

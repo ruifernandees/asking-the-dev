@@ -1,0 +1,53 @@
+@import '../../css/mixins';
+@import '../../css/variables';
+
+.set-question {
+    @include flexCenter(column);
+    margin-top: -20px;
+
+    .logo {
+        width: 400px;
+    }
+
+    h1 {
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 28px;
+    }
+
+    .difficulty {
+        appearance: none;
+        background: url('../../images/keyboard_arrow_down.png') no-repeat right;
+        background-color: darken($background-color, 5%);
+        border-radius: 8px;
+        border: 0;
+        padding: 24px 36px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        width: 12em;
+        color: $dark;
+        transition: all ease .3s;
+    }
+
+    .begin {
+        @include flexCenter();
+        cursor: pointer;
+        margin-top: 20px;
+        color: #fff;
+        background-color: $button_color;
+        width: 300px;
+        height: 60px;
+        border-radius: 50px;
+        font-size: 24px;
+        border: solid;
+        transition: all ease .5s;
+
+        &:hover {
+            border: solid;
+            border-color: $dark;
+            color: $dark;
+            background-color: $background-color;
+        }
+    }
+}
