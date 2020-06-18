@@ -52,22 +52,24 @@ const Question = () => {
             history.push('/set-questions');
             return;
         }
-        console.log("Question screen: ", questions);
+
+        if (completedQuestions.length >= 10) {
+            history.push('/end');
+            return;
+        }
+        // console.log("Question screen: ", questions);
         const notCompletedQuestions = questions.filter(question => {
             return !completedQuestions.includes(question);
         });
-        console.log("Completed questions: ", completedQuestions);
-        console.log("Not completed questions: ", notCompletedQuestions);
+        // console.log("Completed questions: ", completedQuestions);
+        // console.log("Not completed questions: ", notCompletedQuestions);
 
         const currentQuestion = notCompletedQuestions[0];
-        console.log("Current Question: ", currentQuestion);
+        // console.log("Current Question: ", currentQuestion);
         // setQuestion([currentQuestion]);
-        setQuestion(currentQuestion);
+        setQuestion({ ...currentQuestion, questionNumber: questions.indexOf(currentQuestion) });
     }, []);
-
-    useEffect(() => {
-        console.log(selectedAnswer)
-    }, [selectedAnswer]);
+    
 
     useEffect(() => {
         // console.log("Question const: ", question);
@@ -98,6 +100,16 @@ const Question = () => {
         }
     }
 
+    function handleNextQuestion() {
+        const newCompletedQuestions = [ ...completedQuestions, question ];
+        setCompletedQuestions(newCompletedQuestions);
+        history.push('/question');
+    }
+
+    useEffect(() => {
+        console.log(completedQuestions);
+    }, [completedQuestions])
+
     return (
         <section className="question">
             <img className="logo" src={logo} alt="Asking the Dev logo" />
@@ -119,6 +131,7 @@ const Question = () => {
                         onClick={() => {
                             resultScreen.current.style.display = 'none';
                             correctAnswerScreen.current.style.display = 'none';
+                            handleNextQuestion();
                         }}
                     >
                         Next answer 
@@ -137,14 +150,14 @@ const Question = () => {
                         onClick={() => {
                             resultScreen.current.style.display = 'none';
                             wrongAnswerScreen.current.style.display = 'none';
+                            handleNextQuestion();
                         }}
                         className="navigate"
                     >
-
+                        Next answer
                         <span className="material-icons md-36">
-                            keyboard_backspace
+                            arrow_right_alt
                         </span>
-                        Go back
                     </button>
                 </div>
 
@@ -168,7 +181,9 @@ const Question = () => {
                     </button>
                 </div>
             </div>
-
+            <div className="currentQuestion">
+                {question.questionNumber}/10
+            </div>
             <div className="cards">
                 {answersToRender}
             </div>

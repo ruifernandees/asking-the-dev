@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 
 import Load from '../Load';
 import { QuestionContext } from '../../Context/QuestionContext';
+import history from '../../history';
 
 import './styles.css';
 import logo from '../../images/asking-the-dev.png';
@@ -13,6 +14,8 @@ const QuestionSetup = () => {
     const {
         questions, 
         setQuestions,
+        completedQuestions,
+        setCompletedQuestions,
         handleBegin, 
         difficulty, 
         handleSelectDifficulty, 
@@ -20,6 +23,11 @@ const QuestionSetup = () => {
         setLoading
     } = useContext(QuestionContext);
     
+    useEffect(() => {
+        // if (completedQuestions.length > 0 && completedQuestions.length < 10) {
+        //     history.push('/question');
+        // }
+    }, []);
 
     useEffect(() => {
         if (!loading) {

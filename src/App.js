@@ -3,8 +3,10 @@ import React from 'react';
 import { Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 
 import Home from './screens/Home';
-import Question from './screens/Question';
 import QuestionSetup from './screens/QuestionSetup';
+import Question from './screens/Question';
+import End from './screens/End';
+
 import { QuestionProvider } from './Context/QuestionContext';
 import history from './history';
 
@@ -22,11 +24,14 @@ const App = () => (
                 <Route exact path='/'>
                     <Home />
                 </Route>
+                <Route exact path='/set-questions'>
+                    <QuestionSetup />
+                </Route>
                 <Route exact path='/question'>
                     <Question />
                 </Route>
-                <Route exact path='/set-questions'>
-                    <QuestionSetup />
+                <Route exact path='/end'>
+                    <End />
                 </Route>
             </Switch>
         </Router>

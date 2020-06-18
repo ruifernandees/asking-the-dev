@@ -41,6 +41,7 @@
         border-radius: 50px;
         font-size: 24px;
         border: solid;
+        border-color: $button_color;
         transition: all ease .5s;
 
         &:hover {

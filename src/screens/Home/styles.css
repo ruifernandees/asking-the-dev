@@ -65,6 +65,7 @@
   border-radius: 50px;
   font-size: 24px;
   border: solid;
+  border-color: #3a64c0;
   -webkit-transition: all ease .5s;
   transition: all ease .5s;
 }

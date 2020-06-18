@@ -1,7 +1,7 @@
 @import '../../css/mixins';
 @import '../../css/variables';
 
-.home {
+.end {
     @include flexCenter(column);
     margin-top: -20px;
 
@@ -13,6 +13,11 @@
         margin-top: 20px;
         font-weight: 400;
         font-size: 32px;
+    }
+
+    h2 {
+        margin-top: 15px;
+        font-weight: 400;
     }
 
     .buttons {
@@ -44,26 +49,6 @@
             span {
                 margin-left: -8px;
             }
-        }
-    }
-
-    .send {
-        cursor: pointer;
-        margin-top: 20px;
-        color: #fff;
-        background-color: $button_color;
-        width: 300px;
-        height: 60px;
-        border-radius: 50px;
-        font-size: 24px;
-        border: solid;
-        transition: all ease .5s;
-
-        &:hover {
-            border: solid;
-            border-color: $dark;
-            color: $dark;
-            background-color: $background_color;
         }
     }
 }

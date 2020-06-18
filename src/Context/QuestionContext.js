@@ -28,7 +28,7 @@ const QuestionProvider = ({ children }) => {
 
         setLoading(true);
 
-        const response = await api.get(`?amount=10&category=18&difficulty=${difficulty}&type=multiple`)
+        const response = await api.get(`?amount=10&category=18&difficulty=${difficulty}&type=multiple`);
 
         // console.log(response.data);
         const results = response.data.results;
@@ -38,7 +38,7 @@ const QuestionProvider = ({ children }) => {
             result.correct_answer
         ]);
 
-        console.log("All answers: ", allAnswers);
+        // console.log("All answers: ", allAnswers);
         const shuffle = (arr) => {
             for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * i)
@@ -51,7 +51,7 @@ const QuestionProvider = ({ children }) => {
 
         const shuffledAllAnswers = allAnswers.map(questionAllAnswers => shuffle(questionAllAnswers));
 
-        console.log("shuffled all answers", shuffledAllAnswers);
+        // console.log("shuffled all answers", shuffledAllAnswers);
         const filteredResult = results.map(result => ({
             ...result, 
             allAnswers: shuffledAllAnswers.filter(allAnswer => {
@@ -64,10 +64,15 @@ const QuestionProvider = ({ children }) => {
 
         // console.log(filteredResult);
         setQuestions(filteredResult);
-        setCompletedQuestions([filteredResult[0]]);
+        const newCompletedQuestions = [ ...completedQuestions, filteredResult[0], filteredResult[1], filteredResult[2], filteredResult[3], filteredResult[4], filteredResult[5], filteredResult[6], filteredResult[7] ]
+        setCompletedQuestions(newCompletedQuestions);
         setLoading(false);
         history.push('/question');
     }
+
+    useEffect(() => {
+        console.log("Completed Questions: ", completedQuestions);
+    }, [completedQuestions]);
     
     return (
         <QuestionContext.Provider 
