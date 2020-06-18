@@ -4,12 +4,14 @@ import api from '../services/api';
 
 import history from '../history';
 
-const Context = createContext();
+const QuestionContext = createContext();
 
 
 
 const QuestionProvider = ({ children }) => {
     const [questions, setQuestions] = useState([]);
+    const [completedQuestions, setCompletedQuestions] = useState([]);
+    const [userAnswers, setUserAnswers] = useState([]); //booleans
     const [difficulty, setDifficulty] = useState('easy');
     const [loading, setLoading] = useState(false);
 
@@ -28,16 +30,15 @@ const QuestionProvider = ({ children }) => {
 
         const response = await api.get(`?amount=10&category=18&difficulty=${difficulty}&type=multiple`)
 
-        console.log(response.data);
+        // console.log(response.data);
         const results = response.data.results;
-
+        console.log("Results ", results);
         const allAnswers = results.map(result => [
             ...result.incorrect_answers,
             result.correct_answer
         ]);
 
-        // console.log(allAnswers);
-
+        console.log("All answers: ", allAnswers);
         const shuffle = (arr) => {
             for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * i)
@@ -46,11 +47,11 @@ const QuestionProvider = ({ children }) => {
                 arr[j] = temp
             }
             return arr;
-        }
+        };
 
         const shuffledAllAnswers = allAnswers.map(questionAllAnswers => shuffle(questionAllAnswers));
 
-        // console.log(shuffledAllAnswers);
+        console.log("shuffled all answers", shuffledAllAnswers);
         const filteredResult = results.map(result => ({
             ...result, 
             allAnswers: shuffledAllAnswers.filter(allAnswer => {
@@ -58,27 +59,35 @@ const QuestionProvider = ({ children }) => {
                 allAnswer.includes(result.incorrect_answers[0]) &&
                 allAnswer.includes(result.incorrect_answers[1]) &&
                 allAnswer.includes(result.incorrect_answers[2]))
-            })
+            })[0]
         }));
 
-        console.log(filteredResult);
+        // console.log(filteredResult);
         setQuestions(filteredResult);
+        setCompletedQuestions([filteredResult[0]]);
         setLoading(false);
         history.push('/question');
     }
-
-    // useEffect(() => {
-    //     if (!loading) {
-    //         history.push('/question');
-    //     }
-    // }, [loading]);
     
-
     return (
-        <Context.Provider value={{ questions, handleBegin, difficulty, handleSelectDifficulty, loading, setLoading }}>
+        <QuestionContext.Provider 
+            value={{ 
+                questions,
+                setQuestions,
+                completedQuestions,
+                setCompletedQuestions,
+                userAnswers,
+                setUserAnswers,
+                handleBegin,
+                difficulty,
+                handleSelectDifficulty,
+                loading,
+                setLoading
+            }}
+        >
             {children}
-        </Context.Provider>
+        </QuestionContext.Provider>
     );
 };
 
-export { Context, QuestionProvider };
+export { QuestionContext, QuestionProvider };

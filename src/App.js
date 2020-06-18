@@ -8,7 +8,7 @@ import QuestionSetup from './screens/QuestionSetup';
 import { QuestionProvider } from './Context/QuestionContext';
 import history from './history';
 
-import './reset.css'
+import './css/reset.css';
 
 const App = () => (
     <QuestionProvider>

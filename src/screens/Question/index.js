@@ -1,50 +1,79 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 
 import RadioButton from './RadioButton';
-import api from '../../services/api';
+import { QuestionContext } from '../../Context/QuestionContext';
+import history from '../../history';
 
 import './styles.css';
 import logo from '../../images/asking-the-dev.png';
 
 const Question = () => {
     const [selectedAnswer, setSelectedAnswer] = useState(-1);
-    const [question, setQuestion] = useState([]);
+    const [question, setQuestion] = useState({});
+    const [allAnswers, setAllAnswers] = useState([]);
 
     const resultScreen = useRef(null);
     const correctAnswerScreen = useRef(null);
     const wrongAnswerScreen = useRef(null);
     const alertAnswerScreen = useRef(null);
 
+    const {
+        questions,
+        setQuestions,
+        completedQuestions,
+        setCompletedQuestions,
+        loading,
+        setLoading
+    } = useContext(QuestionContext);
+
+    let answersToRender;
+    if (allAnswers) {
+        answersToRender = allAnswers.map(answer => {
+            const index = allAnswers.indexOf(answer);
+            return (
+                <div
+                    className={`card ${
+                        selectedAnswer === index ? 'selected' : ''
+                        }`}
+                    key={index}
+                    onClick={() => handleSelectAnswer(index)}
+                >
+                    <RadioButton />
+                    <p>{answer}</p>
+                </div>
+            );
+        });
+    } else {
+        answersToRender = "Loading...";
+    }
+
     useEffect(() => {
-        api.get('?amount=1&category=18&difficulty=easy&type=multiple')
-            .then(response => {
-                // console.log(response.data);
-                const result = response.data.results[0];
+        if (questions.length === 0) {
+            history.push('/set-questions');
+            return;
+        }
+        console.log("Question screen: ", questions);
+        const notCompletedQuestions = questions.filter(question => {
+            return !completedQuestions.includes(question);
+        });
+        console.log("Completed questions: ", completedQuestions);
+        console.log("Not completed questions: ", notCompletedQuestions);
 
-                const allAnswers = [
-                    ...result.incorrect_answers,
-                    result.correct_answer
-                ];
-
-                const shuffle = (arr) => {
-                    for (let i = arr.length - 1; i > 0; i--) {
-                        const j = Math.floor(Math.random() * i)
-                        const temp = arr[i]
-                        arr[i] = arr[j]
-                        arr[j] = temp
-                    }
-                    return arr;
-                }
-
-                const shuffledAllAnswers = shuffle(allAnswers);
-                const filteredResult = {
-                    ...result,
-                    allAnswers: shuffledAllAnswers
-                }
-
-                setQuestion([filteredResult]);
-            });
+        const currentQuestion = notCompletedQuestions[0];
+        console.log("Current Question: ", currentQuestion);
+        // setQuestion([currentQuestion]);
+        setQuestion(currentQuestion);
     }, []);
+
+    useEffect(() => {
+        console.log(selectedAnswer)
+    }, [selectedAnswer]);
+
+    useEffect(() => {
+        // console.log("Question const: ", question);
+        setAllAnswers(question.allAnswers);
+        // console.log("us question", allAnswers)
+    }, [question]);
 
     function handleSelectAnswer(index) {
         setSelectedAnswer(index);
@@ -57,10 +86,9 @@ const Question = () => {
             return;
         }
 
-        const allAnswers = question[0].allAnswers;
         const found = allAnswers.find(item => allAnswers.indexOf(item) === selectedAnswer);
 
-        const isCorrect = (question[0].correct_answer === found);
+        const isCorrect = (question.correct_answer === found);
         if (isCorrect) {
             resultScreen.current.style.display = 'flex';
             correctAnswerScreen.current.style.display = 'flex';
@@ -68,18 +96,12 @@ const Question = () => {
             resultScreen.current.style.display = 'flex';
             wrongAnswerScreen.current.style.display = 'flex';
         }
-        // console.log(selectedAnswer);
-        // console.log(allAnswers);
-        // console.log(found);
     }
 
     return (
         <section className="question">
             <img className="logo" src={logo} alt="Asking the Dev logo" />
-            {/* <h1>{question.map((item) => {
-                return item.question;
-            })}</h1> */}
-            <h1>{question.map(item => item.question)}</h1>
+            <h1>{question.question}</h1>
 
             <div
                 className={`result`}
@@ -148,24 +170,7 @@ const Question = () => {
             </div>
 
             <div className="cards">
-                {question.map((item) => {
-                    const allAnswers = item.allAnswers;
-                    return allAnswers.map((answer) => {
-                        const index = allAnswers.indexOf(answer);
-                        return (
-                            <div
-                                className={`card ${
-                                    selectedAnswer === index ? 'selected' : ''
-                                    }`}
-                                key={index}
-                                onClick={() => handleSelectAnswer(index)}
-                            >
-                                <RadioButton />
-                                <p>{answer}</p>
-                            </div>
-                        );
-                    })
-                })}
+                {answersToRender}
             </div>
 
             <button className="send" onClick={() => handleSend(selectedAnswer)}>Send</button>

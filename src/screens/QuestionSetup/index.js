@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
 
-// import history from '../../history';
 import Load from '../Load';
-import { Context } from '../../Context/QuestionContext';
+import { QuestionContext } from '../../Context/QuestionContext';
 
 import './styles.css';
 import logo from '../../images/asking-the-dev.png';
@@ -11,16 +9,16 @@ import logo from '../../images/asking-the-dev.png';
 const QuestionSetup = () => {
     const loadingScreen = useRef(null);
 
-    // const history = useHistory();
 
     const {
         questions, 
+        setQuestions,
         handleBegin, 
         difficulty, 
         handleSelectDifficulty, 
         loading, 
         setLoading
-    } = useContext(Context);
+    } = useContext(QuestionContext);
     
 
     useEffect(() => {
@@ -33,10 +31,6 @@ const QuestionSetup = () => {
         console.log("loading...");
         loadingScreen.current.style.display = "flex";
     }, [loading]);
-
-    // useEffect(() => {
-    //     console.log("Questions:", questions);
-    // }, [questions])
 
     return (
         <form className="set-question">
