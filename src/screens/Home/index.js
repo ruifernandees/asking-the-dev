@@ -1,51 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-import api from '../../services/api';
 
 import './styles.css';
 import logo from '../../images/asking-the-dev.png';
 
 const Home = () => {
-
-    // useEffect(() => {
-    //     api.get('?amount=1&category=18&difficulty=easy&type=multiple')
-    //         .then(response => {
-    //             // console.log(response.data);
-    //             const result = response.data.results[0];
-
-    //             const allAnswers = [
-    //                 ...result.incorrect_answers,
-    //                 result.correct_answer
-    //             ];
-
-    //             const shuffle = (arr) => {
-    //                 for (let i = arr.length - 1; i > 0; i--) {
-    //                     const j = Math.floor(Math.random() * i)
-    //                     const temp = arr[i]
-    //                     arr[i] = arr[j]
-    //                     arr[j] = temp
-    //                 }
-    //                 return arr;
-    //             }
-
-    //             const shuffledAllAnswers = shuffle(allAnswers);
-    //             const filteredResult = {
-    //                 ...result,
-    //                 allAnswers: shuffledAllAnswers
-    //             }
-
-    //             setQuestion([filteredResult]);
-    //         });
-    // }, []);
-
     return (
         <section className="home">
             <img className="logo" src={logo} alt="Asking the Dev logo" />
 
             <div className="buttons">
-                <Link to='/set-questions'>
+                <Link to='/play'>
                     <button className="button">
                         <span className="material-icons md-36">
                             play_arrow
@@ -53,6 +18,7 @@ const Home = () => {
                         <p style={{marginLeft: 2 + 'px'}}>Play</p>
                     </button>
                 </Link>
+                
                 <button className="button">
                     <span className="material-icons md-24">
                         info

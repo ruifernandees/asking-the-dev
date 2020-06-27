@@ -1,12 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
-// import { useHistory } from 'react-router-dom';
+
 import api from '../services/api';
 
-import history from '../history';
-
 const QuestionContext = createContext();
-
-
 
 const QuestionProvider = ({ children }) => {
     const [questions, setQuestions] = useState([]);
@@ -14,8 +10,7 @@ const QuestionProvider = ({ children }) => {
     const [userAnswers, setUserAnswers] = useState([]); //booleans
     const [difficulty, setDifficulty] = useState('easy');
     const [loading, setLoading] = useState(false);
-
-    // const history = useHistory();
+    const [playing, setPlaying] = useState(false);
 
     function handleSelectDifficulty(event) {
         const difficulty = event.target.value;
@@ -67,7 +62,7 @@ const QuestionProvider = ({ children }) => {
         const newCompletedQuestions = [ ...completedQuestions, filteredResult[0], filteredResult[1], filteredResult[2], filteredResult[3], filteredResult[4], filteredResult[5], filteredResult[6], filteredResult[7] ]
         setCompletedQuestions(newCompletedQuestions);
         setLoading(false);
-        history.push('/question');
+        setPlaying(true);
     }
 
     useEffect(() => {
@@ -81,8 +76,10 @@ const QuestionProvider = ({ children }) => {
                 setQuestions,
                 completedQuestions,
                 setCompletedQuestions,
-                userAnswers,
-                setUserAnswers,
+                // userAnswers,
+                // setUserAnswers,
+                playing,
+                setPlaying,
                 handleBegin,
                 difficulty,
                 handleSelectDifficulty,
