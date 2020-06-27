@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const Result = ({ result }) => {
+const Result = ({ result, handleNextQuestion }) => {
     const resultScreen = useRef(null);
     const correctAnswerScreen = useRef(null);
     const wrongAnswerScreen = useRef(null);
@@ -51,7 +51,7 @@ const Result = ({ result }) => {
                     onClick={() => {
                         resultScreen.current.style.display = 'none';
                         correctAnswerScreen.current.style.display = 'none';
-                        // handleNextQuestion();
+                        handleNextQuestion();
                     }}
                 >
                     Next answer 
@@ -70,7 +70,7 @@ const Result = ({ result }) => {
                     onClick={() => {
                         resultScreen.current.style.display = 'none';
                         wrongAnswerScreen.current.style.display = 'none';
-                        // handleNextQuestion();
+                        handleNextQuestion();
                     }}
                     className="navigate"
                 >
