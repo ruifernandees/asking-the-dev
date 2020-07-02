@@ -1,20 +1,33 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { QuestionContext } from '../../Context/QuestionContext';
-import history from '../../history';
 
 import './styles.css';
 import logo from '../../images/asking-the-dev.png';
 
 const End = () => {
+    const [finalResult, setFinalResult] = useState(0);
 
-    const { completedQuestions } = useContext(QuestionContext);
+    const { 
+        setPlaying,
+        setFinished,
+        userResults,
+        setUserResults
+     } = useContext(QuestionContext);
+
+    function handleQuizEnd() {
+        setPlaying(false);
+        setFinished(false);
+    }
 
     useEffect(() => {
-        if (completedQuestions.length !== 10) {
-            history.push('/set-questions');
-        }
+        const finalResultLength = userResults.filter(result => result).length;
+
+        setFinalResult(finalResultLength);
+
+        /** CLEAN */
+        setUserResults([]);
     }, []);
 
     return (
@@ -22,10 +35,10 @@ const End = () => {
             <img className="logo" src={logo} alt="Asking the Dev logo" />
 
             <h1>Congratulations! You've finished the quiz!</h1>
-            <h2>Score: 10/10</h2>
+            <h2>Score: {finalResult}/10</h2>
 
             <div className="buttons">
-                <Link to='/'>
+                <Link to='/' onClick={handleQuizEnd}>
                     <button className="button">
                         <span className="material-icons md-36">
                             home

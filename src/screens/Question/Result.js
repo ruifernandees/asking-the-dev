@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
+
+import { QuestionContext } from '../../Context/QuestionContext';
 
 const Result = ({ result, handleNextQuestion }) => {
     const resultScreen = useRef(null);
@@ -6,15 +8,24 @@ const Result = ({ result, handleNextQuestion }) => {
     const wrongAnswerScreen = useRef(null);
     const alertAnswerScreen = useRef(null);
 
+    const {
+        userResults,
+        setUserResults
+    } = useContext(QuestionContext);
+
     const possibleResults = {
         success() {
             resultScreen.current.style.display = 'flex';
             correctAnswerScreen.current.style.display = 'flex';
+            const newResults = [...userResults, true];
+            setUserResults(newResults);
         },
 
         error() {
             resultScreen.current.style.display = 'flex';
             wrongAnswerScreen.current.style.display = 'flex';
+            const newResults = [...userResults, false];
+            setUserResults(newResults);
         },
 
         alert() {

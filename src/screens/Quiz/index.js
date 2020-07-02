@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext } from 'react';
 
 import QuestionSetup from '../QuestionSetup';
 import Question from '../Question';
+import End from '../End';
 import { QuestionContext } from '../../Context/QuestionContext';
 
 const Quiz = () => {
@@ -11,29 +12,23 @@ const Quiz = () => {
 
     const {
         questions,
-        completedQuestions,
-        // setCompletedQuestions,
-        // loading,
-        // setLoading
+        currentQuestionIndex,
+        finished,
     } = useContext(QuestionContext);
 
     useEffect(() => {
-        // console.log("Question screen: ", questions);
-        const notCompletedQuestions = questions.filter(question => {
-            return !completedQuestions.includes(question);
-        });
-        // console.log("Completed questions: ", completedQuestions);
-        // console.log("Not completed questions: ", notCompletedQuestions);
+        const currentQuestionObject = questions.filter(question => 
+            questions.indexOf(question) === currentQuestionIndex
+        )[0];
 
-        // const currentQuestion = notCompletedQuestions[0];
-        // console.log("Current Question: ", currentQuestion);
-        // setQuestion([currentQuestion]);
-        setCurrentQuestion({ ...notCompletedQuestions[0], questionNumber: questions.indexOf(currentQuestion) });
-    }, [completedQuestions]);
+        if (currentQuestionObject) setCurrentQuestion(currentQuestionObject);
+    }, [currentQuestionIndex]);
 
     return (
         <>
-            {playing ? <Question currentQuestion={currentQuestion} /> : <QuestionSetup />}
+            {playing && !finished && <Question currentQuestion={currentQuestion} />}
+            {!playing && !finished &&  <QuestionSetup />}
+            {!playing && finished && <End />}
         </>
     );
 };

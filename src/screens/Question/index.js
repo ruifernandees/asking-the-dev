@@ -4,28 +4,24 @@ import RadioButton from './RadioButton';
 import Result from './Result';
 import Load from '../Load';
 import { QuestionContext } from '../../Context/QuestionContext';
-import history from '../../history';
 
 import './styles.css';
 import logo from '../../images/asking-the-dev.png';
 
 const Question = ({ currentQuestion }) => {
     const [selectedAnswer, setSelectedAnswer] = useState(-1);
-    // const [question, setQuestion] = useState({});
     const [allAnswers, setAllAnswers] = useState([]);
     const [result, setResult] = useState({message: "", selectedAnswer: -1});
 
     const {
-        completedQuestions,
-        setCompletedQuestions,
-        // loading,
-        // setLoading
+        currentQuestionIndex,
+        setCurrentQuestionIndex,
+        setPlaying,
+        setFinished
     } = useContext(QuestionContext);
 
     useEffect(() => {
-        // console.log("Question const: ", question);
         setAllAnswers(currentQuestion.allAnswers);
-        // console.log("us question", allAnswers)
     }, [currentQuestion]);
 
     function handleSelectAnswer(index) {
@@ -58,13 +54,17 @@ const Question = ({ currentQuestion }) => {
     }
 
     function handleNextQuestion() {
-        const newCompletedQuestions = [ ...completedQuestions, currentQuestion ];
-        setCompletedQuestions(newCompletedQuestions);
-    }
+        setSelectedAnswer(-1);
+        
+        if (currentQuestionIndex < 9) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }
 
-    // useEffect(() => {
-    //     console.log(completedQuestions);
-    // }, [completedQuestions])
+        if (currentQuestionIndex >= 9) {
+            setPlaying(false);
+            setFinished(true);
+        }
+    }
 
     return (
         <section className="question">
@@ -74,7 +74,7 @@ const Question = ({ currentQuestion }) => {
             <Result result={result} handleNextQuestion={handleNextQuestion} />
             
             <div className="currentQuestion">
-                {currentQuestion.questionNumber}/10
+                {currentQuestionIndex + 1}/10
             </div>
             <div className="cards">
                 {allAnswers ? 
