@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import he from 'he';
 
 import RadioButton from './RadioButton';
 import Result from './Result';
@@ -69,7 +70,7 @@ const Question = ({ currentQuestion }) => {
     return (
         <section className="question">
             <img className="logo" src={logo} alt="Asking the Dev logo" />
-            <h1>{currentQuestion.question}</h1>
+            <h1>{he.decode(currentQuestion.question)}</h1>
 
             <Result result={result} handleNextQuestion={handleNextQuestion} />
             
@@ -89,7 +90,7 @@ const Question = ({ currentQuestion }) => {
                                 onClick={() => handleSelectAnswer(index)}
                             >
                                 <RadioButton />
-                                <p>{answer}</p>
+                                <p>{he.decode(answer)}</p>
                             </div>
                         );
                     }) :
