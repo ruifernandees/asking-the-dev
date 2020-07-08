@@ -26,7 +26,7 @@ const Home = () => {
                     <p>About</p>
                 </button>
 
-                <button className="button">
+                <a className="button" target='_blank' href="https://github.com/ruifernandees/asking-the-dev">
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         width="24" 
@@ -43,7 +43,7 @@ const Home = () => {
                         </path>
                     </svg>
                     <p>GitHub</p>
-                </button>
+                </a>
             </div>
         </section>
     );
