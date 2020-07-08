@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import Load from '../Load';
 import { QuestionContext } from '../../Context/QuestionContext';
