@@ -34,6 +34,10 @@ $ npm install
 $ npm start
 ```
 
+<h2>Notice:</h2>
+    <p>This project consumes the <a href="https://opentdb.com" target="_blank">Open Trivia DB API</a></p>
+    <p>The UI elements are based on the <a href="https://dribbble.com/shots/10760164-Free-UI-kit-Freelance-Platform-App?utm_source=Clipboard_Shot&utm_campaign=AnthonyChoren&utm_content=Free%20UI%20kit%20Freelance%20Platform%20App&utm_medium=Social_Share">Free UI kit by Anthony Choren</a></p>
+
 <h2>Screens:<h2>
 
 <div>
@@ -70,5 +74,7 @@ $ npm start
     <p>End Screen</p>
     <img src="public/prints/end-screen.png" alt="Home Screen">
 </div>
-
-
+<!-- 
+<div> -->
+    
+<!-- </div> -->
