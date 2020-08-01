@@ -7,6 +7,9 @@
 
     .logo {
         width: 400px;
+        @media (max-width: 900px) {
+            width: 350px;
+        }
     }
 
     h1 {

@@ -19,6 +19,12 @@
   width: 400px;
 }
 
+@media (max-width: 900px) {
+  .home .logo {
+    width: 350px;
+  }
+}
+
 .home h1 {
   margin-top: 20px;
   font-weight: 400;

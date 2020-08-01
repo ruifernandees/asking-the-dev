@@ -1,0 +1,192 @@
+.about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+}
+
+.about h1 {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.about .author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about .author .header-author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about .author .header-author img {
+  width: 250px;
+  border-radius: 100%;
+}
+
+.about .author .header-author h1 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.about .author .link-author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #3a64c0;
+  width: 300px;
+  height: 60px;
+  border-radius: 50px;
+  font-size: 24px;
+  border: solid;
+  border-color: #3a64c0;
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+.about .author .link-author:hover {
+  border: solid;
+  border-color: #272425;
+  color: #272425;
+  background-color: #faf9fe;
+}
+
+.about .author .link-author p {
+  margin-left: 8px;
+}
+
+.about .author .link-author span {
+  margin-left: -8px;
+}
+
+.about .notices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.about .notices h1 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.about .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+  margin-bottom: 5rem;
+}
+
+.about .buttons .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #3a64c0;
+  width: 300px;
+  height: 60px;
+  border-radius: 50px;
+  font-size: 24px;
+  border: solid;
+  border-color: #3a64c0;
+  -webkit-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+.about .buttons .button:hover {
+  border: solid;
+  border-color: #272425;
+  color: #272425;
+  background-color: #faf9fe;
+}
+
+.about .buttons .button p {
+  margin-left: 8px;
+}
+
+.about .buttons .button span {
+  margin-left: -8px;
+}
+/*# sourceMappingURL=styles.css.map */

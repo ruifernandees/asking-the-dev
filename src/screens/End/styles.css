@@ -13,10 +13,17 @@
       -ms-flex-align: center;
           align-items: center;
   margin-top: 40px;
+  text-align: center;
 }
 
 .end .logo {
   width: 400px;
+}
+
+@media (max-width: 900px) {
+  .end .logo {
+    width: 350px;
+  }
 }
 
 .end h1 {

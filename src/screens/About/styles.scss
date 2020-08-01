@@ -1,0 +1,53 @@
+@import '../../css/mixins';
+@import '../../css/variables';
+
+.about {
+    @include flexCenter(column);
+    margin-top: 40px;
+    
+    h1 {
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 32px;
+    }
+
+    .author {
+        @include flexCenter(column);
+        
+        .header-author {
+            @include flexCenter(column);
+            img {
+                width: 250px;
+                border-radius: 100%;
+            }
+
+            h1 {
+                margin-top: 1rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        .link-author {
+            @include defaultButtonStyle();
+        }
+    }
+
+    .notices {
+        @include flexCenter(column);
+        text-align: center;
+        h1 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    .buttons {
+        @include flexCenter(column);
+        margin-top: 20px;
+        margin-bottom: 5rem;
+        .button {
+            @include defaultButtonStyle();
+        }
+    }
+}

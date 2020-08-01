@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './screens/Home';
 import Quiz from './screens/Quiz';
+import About from './screens/About';
 
 import { QuestionProvider } from './Context/QuestionContext';
 
@@ -18,6 +19,9 @@ const App = () => (
                 </Route>
                 <Route exact path='/play'>
                     <Quiz />
+                </Route>
+                <Route exact path='/about'>
+                    <About />
                 </Route>
             </Switch>
         </BrowserRouter>

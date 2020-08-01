@@ -19,13 +19,14 @@ const Home = () => {
                     </button>
                 </Link>
                 
-                <button className="button">
-                    <span className="material-icons md-24">
-                        info
-                    </span>
-                    <p>About</p>
-                </button>
-
+                <Link to='/about'>
+                    <button className="button">
+                        <span className="material-icons md-24">
+                            info
+                        </span>
+                        <p>About</p>
+                    </button>
+                </Link>
                 <a className="button" target='_blank' href="https://github.com/ruifernandees/asking-the-dev">
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 

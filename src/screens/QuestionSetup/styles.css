@@ -19,6 +19,12 @@
   width: 400px;
 }
 
+@media (max-width: 900px) {
+  .set-question .logo {
+    width: 350px;
+  }
+}
+
 .set-question h1 {
   margin-top: 20px;
   font-weight: 400;
