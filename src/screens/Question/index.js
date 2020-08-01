@@ -70,7 +70,7 @@ const Question = ({ currentQuestion }) => {
     return (
         <section className="question">
             <img className="logo" src={logo} alt="Asking the Dev logo" />
-            <h1>{he.decode(currentQuestion.question)}</h1>
+            <h1>{currentQuestion.question && he.decode(currentQuestion.question)}</h1>
 
             <Result result={result} handleNextQuestion={handleNextQuestion} />
             
